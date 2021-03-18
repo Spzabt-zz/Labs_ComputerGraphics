@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -14,8 +15,9 @@ namespace LineDrawAlghorithm
         public double YStart { get; private set; }
         public double XEnd { get; private set; }
         public double YEnd { get; private set; }
+        private readonly Form1 _form1;
 
-        public DDA(double xStart, double yStart, double xEnd, double yEnd)
+        public DDA(double xStart, double yStart, double xEnd, double yEnd, Form1 form1)
         {
             _x1 = xStart;
             _y1 = yStart;
@@ -25,6 +27,7 @@ namespace LineDrawAlghorithm
             YStart = Math.Round(yStart);
             XEnd = Math.Round(xEnd);
             YEnd = Math.Round(yEnd);
+            _form1 = form1;
         }
 
         private double Width()
@@ -53,29 +56,34 @@ namespace LineDrawAlghorithm
         {
             return (_y2 - _y1) / Length();
         }
-        
-        private void PutPixel(Graphics g, int x, int y)
+
+        private static void PutPixel(Graphics g, int x, int y)
         {
             g.FillRectangle(Brushes.DarkRed, x, y, 1, 1);
         }
-        
-        public void Draw(PictureBox pictureBox)
+
+        public void Draw(Graphics graphics)
         {
+            Stopwatch stopwatch = new Stopwatch();
             int i = 1;
             int x, y;
             int length = Length();
-            Bitmap bmp = new Bitmap(pictureBox.Width, pictureBox.Height);
-            pictureBox.Image = bmp;
-            Graphics graphics = Graphics.FromImage(pictureBox.Image);
-            while (i <= length)
+            //Bitmap bmp = new Bitmap(pictureBox.Width, pictureBox.Height);
+            //pictureBox.Image = bmp;
+            //Graphics graphics = Graphics.FromImage(pictureBox.Image);
+            stopwatch.Start();
+            while ( /*i <= length*/length != 0)
             {
                 _x1 += DeltaX();
-                x = (int)Math.Round(_x1);
+                x = (int) Math.Round(_x1);
                 _y1 += DeltaY();
-                y = (int)Math.Round(_y1);
+                y = (int) Math.Round(_y1);
                 PutPixel(graphics, x, y);
                 length--;
             }
+
+            stopwatch.Stop();
+            _form1.GetLabel().Text = stopwatch.Elapsed.ToString();
         }
     }
 }

@@ -30,17 +30,15 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this._showTime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this._yTextBox = new System.Windows.Forms.TextBox();
             this._xTextBox = new System.Windows.Forms.TextBox();
             this._drawButton = new System.Windows.Forms.Button();
-            this._pictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize) (this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this._pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -53,18 +51,22 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this._showTime);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this._yTextBox);
             this.splitContainer1.Panel1.Controls.Add(this._xTextBox);
             this.splitContainer1.Panel1.Controls.Add(this._drawButton);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this._pictureBox);
             this.splitContainer1.Size = new System.Drawing.Size(700, 437);
             this.splitContainer1.SplitterDistance = 140;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // _showTime
+            // 
+            this._showTime.Location = new System.Drawing.Point(22, 136);
+            this._showTime.Name = "_showTime";
+            this._showTime.Size = new System.Drawing.Size(100, 23);
+            this._showTime.TabIndex = 5;
             // 
             // label2
             // 
@@ -106,15 +108,6 @@
             this._drawButton.UseVisualStyleBackColor = true;
             this._drawButton.Click += new System.EventHandler(this._drawButton_Click);
             // 
-            // _pictureBox
-            // 
-            this._pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._pictureBox.Location = new System.Drawing.Point(0, 0);
-            this._pictureBox.Name = "_pictureBox";
-            this._pictureBox.Size = new System.Drawing.Size(552, 433);
-            this._pictureBox.TabIndex = 0;
-            this._pictureBox.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -127,12 +120,12 @@
             this.Text = "Line Drawer 5000";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize) (this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this._pictureBox)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Label _showTime;
 
         private System.Windows.Forms.TextBox _xTextBox;
         private System.Windows.Forms.TextBox _yTextBox;
@@ -140,8 +133,6 @@
         private System.Windows.Forms.Label label2;
 
         private System.Windows.Forms.Button _drawButton;
-
-        private System.Windows.Forms.PictureBox _pictureBox;
 
         private System.Windows.Forms.SplitContainer splitContainer1;
 
