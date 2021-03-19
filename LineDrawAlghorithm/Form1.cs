@@ -8,13 +8,13 @@ namespace LineDrawAlghorithm
     public partial class Form1 : Form
     {
         private Graphics _graphics;
-        private DDA[] _dda;
+        private Figures[] _figures;
 
         public Form1()
         {
             InitializeComponent();
-            _xTextBox.Text = "100";
-            _yTextBox.Text = "200";
+            /*_xStartTextBox.Text = "90";
+            _yStartTextBox.Text = "180";*/
         }
 
         public Label GetLabel()
@@ -26,15 +26,16 @@ namespace LineDrawAlghorithm
         {
             try
             {
-                var xStart = Convert.ToDouble(_xTextBox.Text);
-                var yStart = Convert.ToDouble(_xTextBox.Text);
-                var xEnd = Convert.ToDouble(_yTextBox.Text);
-                var yEnd = Convert.ToDouble(_yTextBox.Text);
-
-                _dda = new[]
+                var xStart = Convert.ToDouble(_xStartTextBox.Text);
+                var yStart = Convert.ToDouble(_yStartTextBox.Text);
+                var xEnd = Convert.ToDouble(_xEndTextBox.Text);
+                var yEnd = Convert.ToDouble(_yEndTextBox.Text);
+                
+                _figures = new Figures[]
                 {
                     new DDA(xStart, yStart, xEnd, yEnd, this),
-                    new DDA(xStart, yStart + 10, xEnd, yEnd + 10, this)
+                    new DDA(xStart + 10, yStart + 10, xEnd + 10, yEnd + 10, this),
+                    //new DDA(10, 30, 100, 100, this)
                 };
 
                 splitContainer1.Panel2.Paint += Panel2_Paint;
@@ -43,17 +44,17 @@ namespace LineDrawAlghorithm
             catch (FormatException ex)
             {
                 MessageBox.Show(ex.Message);
-                _xTextBox.Text = Empty;
-                _yTextBox.Text = Empty;
+                _xStartTextBox.Text = Empty;
+                _yStartTextBox.Text = Empty;
             }
         }
 
         private void Panel2_Paint(object sender, PaintEventArgs e)
         {
             _graphics = e.Graphics;
-            foreach (var line in _dda)
+            foreach (var figure in _figures)
             {
-                line.Draw(_graphics);
+                figure.Draw(_graphics);
             }
 
             splitContainer1.Panel2.Paint -= Panel2_Paint;
