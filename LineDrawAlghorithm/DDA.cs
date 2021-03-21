@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -11,16 +10,14 @@ namespace LineDrawAlghorithm
         private double _y1;
         private readonly double _x2;
         private readonly double _y2;
-        private readonly Form1 _form1;
 
-        public DDA(double xStart, double yStart, double xEnd, double yEnd, Form1 form1) : base(xStart, yStart, xEnd,
-            yEnd)
+        public DDA(double xStart, double yStart, double xEnd, double yEnd, Color color, Label label) : base(xStart,
+            yStart, xEnd, yEnd, color, label)
         {
             _x1 = xStart;
             _y1 = yStart;
             _x2 = xEnd;
             _y2 = yEnd;
-            _form1 = form1;
         }
 
         private int Width()
@@ -35,7 +32,7 @@ namespace LineDrawAlghorithm
 
         private int Length()
         {
-            return  Math.Max(Width(), Height());
+            return Math.Max(Width(), Height());
         }
 
         private double DeltaX()
@@ -48,22 +45,47 @@ namespace LineDrawAlghorithm
             return (_y2 - _y1) / Length();
         }
 
-        public override void Draw(Graphics graphics)
+        public override void Draw(Graphics graphics, Color color)
         {
-            Stopwatch stopwatch = new Stopwatch();
             int length = Length();
+            double dx = DeltaX();
+            double dy = DeltaY();
 
-            stopwatch.Start();
             while (length != 0)
             {
-                _x1 += DeltaX();
-                _y1 += DeltaY();
-                PutPixel(graphics, (int) Math.Round(_x1), (int) Math.Round(_y1));
+                _x1 += dx;
+                _y1 += dy;
+                PutPixel(graphics, (int) Math.Round(_x1), (int) Math.Round(_y1), color);
                 length--;
             }
+        }
 
-            stopwatch.Stop();
-            _form1.GetLabel().Text = stopwatch.Elapsed.ToString();
+        protected override void AlgImplementation(int x1, int y1, int x2, int y2, Graphics graphics,
+            Color color)
+        {
+            int xStart = /*(int) Math.Round(x1)*/x1;
+            int yStart = /*(int) Math.Round(y1)*/y1;
+            int xEnd = /*(int) Math.Round(x2)*/x2;
+            int yEnd = /*(int) Math.Round(y2)*/y2;
+
+            int deltaX = Math.Abs(xStart - xEnd);
+            int deltaY = Math.Abs(yStart - yEnd);
+            
+            int length = Math.Max(deltaX, deltaY);
+
+            double dX = (x2 - x1) / length;
+            double dY = (y2 - y1) / length;
+
+            double x = x1;
+            double y = y1;
+
+            while (length != 0)
+            {
+                x += dX;
+                y += dY;
+                PutPixel(graphics, (int) Math.Round(x), (int) Math.Round(y), color);
+                length--;
+            }
         }
     }
 }

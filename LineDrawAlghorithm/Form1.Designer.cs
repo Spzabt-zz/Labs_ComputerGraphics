@@ -30,19 +30,30 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this._benchButton = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this._showBresenhamTime = new System.Windows.Forms.Label();
+            this._showDDATime = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this._showLibraryTime = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this._yEndTextBox = new System.Windows.Forms.TextBox();
             this._xEndTextBox = new System.Windows.Forms.TextBox();
-            this._showTime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this._yStartTextBox = new System.Windows.Forms.TextBox();
             this._xStartTextBox = new System.Windows.Forms.TextBox();
             this._drawButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this._countOfIterations = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize) (this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -55,19 +66,89 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label8);
+            this.splitContainer1.Panel1.Controls.Add(this._countOfIterations);
+            this.splitContainer1.Panel1.Controls.Add(this._benchButton);
+            this.splitContainer1.Panel1.Controls.Add(this.label7);
+            this.splitContainer1.Panel1.Controls.Add(this.label6);
+            this.splitContainer1.Panel1.Controls.Add(this._showBresenhamTime);
+            this.splitContainer1.Panel1.Controls.Add(this._showDDATime);
+            this.splitContainer1.Panel1.Controls.Add(this.label5);
+            this.splitContainer1.Panel1.Controls.Add(this._showLibraryTime);
             this.splitContainer1.Panel1.Controls.Add(this.label4);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this._yEndTextBox);
             this.splitContainer1.Panel1.Controls.Add(this._xEndTextBox);
-            this.splitContainer1.Panel1.Controls.Add(this._showTime);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this._yStartTextBox);
             this.splitContainer1.Panel1.Controls.Add(this._xStartTextBox);
             this.splitContainer1.Panel1.Controls.Add(this._drawButton);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
             this.splitContainer1.Size = new System.Drawing.Size(700, 437);
             this.splitContainer1.SplitterDistance = 140;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // _benchButton
+            // 
+            this._benchButton.Location = new System.Drawing.Point(3, 140);
+            this._benchButton.Name = "_benchButton";
+            this._benchButton.Size = new System.Drawing.Size(130, 23);
+            this._benchButton.TabIndex = 17;
+            this._benchButton.Text = "Show Time";
+            this._benchButton.UseVisualStyleBackColor = true;
+            this._benchButton.Click += new System.EventHandler(this.benchButton_Click);
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(19, 281);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(100, 23);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Алгоритм ЦДА:";
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(19, 327);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 30);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Алгоритм Брезенхема:";
+            // 
+            // _showBresenhamTime
+            // 
+            this._showBresenhamTime.Location = new System.Drawing.Point(19, 357);
+            this._showBresenhamTime.Name = "_showBresenhamTime";
+            this._showBresenhamTime.Size = new System.Drawing.Size(100, 23);
+            this._showBresenhamTime.TabIndex = 14;
+            this._showBresenhamTime.Text = "2";
+            // 
+            // _showDDATime
+            // 
+            this._showDDATime.Location = new System.Drawing.Point(19, 304);
+            this._showDDATime.Name = "_showDDATime";
+            this._showDDATime.Size = new System.Drawing.Size(100, 23);
+            this._showDDATime.TabIndex = 13;
+            this._showDDATime.Text = "1";
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(19, 380);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 23);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Бібліотечна лінія:";
+            // 
+            // _showLibraryTime
+            // 
+            this._showLibraryTime.Location = new System.Drawing.Point(19, 403);
+            this._showLibraryTime.Name = "_showLibraryTime";
+            this._showLibraryTime.Size = new System.Drawing.Size(100, 23);
+            this._showLibraryTime.TabIndex = 11;
+            this._showLibraryTime.Text = "3";
             // 
             // label4
             // 
@@ -98,13 +179,6 @@
             this._xEndTextBox.Name = "_xEndTextBox";
             this._xEndTextBox.Size = new System.Drawing.Size(83, 20);
             this._xEndTextBox.TabIndex = 6;
-            // 
-            // _showTime
-            // 
-            this._showTime.Location = new System.Drawing.Point(19, 403);
-            this._showTime.Name = "_showTime";
-            this._showTime.Size = new System.Drawing.Size(100, 23);
-            this._showTime.TabIndex = 5;
             // 
             // label2
             // 
@@ -146,6 +220,30 @@
             this._drawButton.UseVisualStyleBackColor = true;
             this._drawButton.Click += new System.EventHandler(this._drawButton_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(552, 433);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // _countOfIterations
+            // 
+            this._countOfIterations.Location = new System.Drawing.Point(50, 169);
+            this._countOfIterations.Name = "_countOfIterations";
+            this._countOfIterations.Size = new System.Drawing.Size(83, 20);
+            this._countOfIterations.TabIndex = 18;
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(3, 166);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 30);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Test count";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,20 +254,38 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Line Drawer 5000";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize) (this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.TextBox _countOfIterations;
+        private System.Windows.Forms.Label label8;
+
+        private System.Windows.Forms.Button _benchButton;
+
+        private System.Windows.Forms.PictureBox pictureBox1;
+
+        private System.Windows.Forms.Label label7;
+
+        private System.Windows.Forms.Label _showBresenhamTime;
+        private System.Windows.Forms.Label label6;
+
+        private System.Windows.Forms.Label _showDDATime;
+
+        private System.Windows.Forms.Label _showLibraryTime;
+        private System.Windows.Forms.Label label5;
 
         private System.Windows.Forms.TextBox _yEndTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
 
         private System.Windows.Forms.TextBox _xEndTextBox;
-
-        private System.Windows.Forms.Label _showTime;
 
         private System.Windows.Forms.TextBox _xStartTextBox;
         private System.Windows.Forms.TextBox _yStartTextBox;
