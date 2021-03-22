@@ -11,8 +11,8 @@ namespace LineDrawAlghorithm
         private readonly double _x2;
         private readonly double _y2;
 
-        public DDA(double xStart, double yStart, double xEnd, double yEnd, Color color, Label label) : base(xStart,
-            yStart, xEnd, yEnd, color, label)
+        public DDA(double xStart, double yStart, double xEnd, double yEnd, Color color, Label label) :
+            base(xStart, yStart, xEnd, yEnd, color, label)
         {
             _x1 = xStart;
             _y1 = yStart;
@@ -20,19 +20,19 @@ namespace LineDrawAlghorithm
             _y2 = yEnd;
         }
 
-        private int Width()
+        private int Dx()
         {
             return (int) Math.Abs(XStart - XEnd);
         }
 
-        private int Height()
+        private int Dy()
         {
             return (int) Math.Abs(YStart - YEnd);
         }
 
         private int Length()
         {
-            return Math.Max(Width(), Height());
+            return Math.Max(Dx(), Dy());
         }
 
         private double DeltaX()
@@ -51,6 +51,7 @@ namespace LineDrawAlghorithm
             double dx = DeltaX();
             double dy = DeltaY();
 
+            PutPixel(graphics, (int) _x1, (int) _x2, color);
             while (length != 0)
             {
                 _x1 += dx;
@@ -63,22 +64,14 @@ namespace LineDrawAlghorithm
         protected override void AlgImplementation(int x1, int y1, int x2, int y2, Graphics graphics,
             Color color)
         {
-            int xStart = /*(int) Math.Round(x1)*/x1;
-            int yStart = /*(int) Math.Round(y1)*/y1;
-            int xEnd = /*(int) Math.Round(x2)*/x2;
-            int yEnd = /*(int) Math.Round(y2)*/y2;
-
-            int deltaX = Math.Abs(xStart - xEnd);
-            int deltaY = Math.Abs(yStart - yEnd);
-            
+            int deltaX = Math.Abs(x1 - x2), deltaY = Math.Abs(y1 - y2);
             int length = Math.Max(deltaX, deltaY);
 
-            double dX = (x2 - x1) / length;
-            double dY = (y2 - y1) / length;
+            double dX = deltaX / (float) length, dY = deltaY / (float) length;
 
-            double x = x1;
-            double y = y1;
+            double x = x1, y = y1;
 
+            PutPixel(graphics, (int) _x1, (int) _x2, color);
             while (length != 0)
             {
                 x += dX;

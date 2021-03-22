@@ -30,18 +30,19 @@ namespace LineDrawAlghorithm
         protected abstract void AlgImplementation(int x1, int y1, int x2, int y2, Graphics graphics,
             Color color);
 
-        public void ShowAlgTime(Figures figures, Graphics g, Color c, Label label, PictureBox pictureBox, Form1 form1)
+        public void ShowAlgTime(Figures figures, Graphics g, Color c, Label label, PictureBox pictureBox, Form1 form1,
+            int count)
         {
-            //form1.Count();
+            int countOfIter = form1.Count(count);
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            for (int i = 0; i < 100000; i++)
+            for (int i = 0; i < countOfIter; i++)
             {
-                figures.AlgImplementation((int)XStart, (int) YStart, (int) XEnd, (int) YEnd, g, c);
+                figures.AlgImplementation((int) XStart, (int) YStart, (int) XEnd, (int) YEnd, g, c);
             }
 
             stopwatch.Stop();
-            form1.ToLabel(label, stopwatch.Elapsed.ToString());
+            form1.ToLabel(label, c, stopwatch.Elapsed.ToString());
             g.Clear(pictureBox.BackColor);
         }
 

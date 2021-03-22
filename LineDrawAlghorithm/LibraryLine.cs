@@ -9,8 +9,8 @@ namespace LineDrawAlghorithm
         private readonly Point _p2;
         private Pen _pen;
 
-        public LibraryLine(double xStart, double yStart, double xEnd, double yEnd, Color color, Label label) : base(
-            xStart, yStart, xEnd, yEnd, color, label)
+        public LibraryLine(double xStart, double yStart, double xEnd, double yEnd, Color color, Label label) : 
+            base(xStart, yStart, xEnd, yEnd, color, label)
         {
             _p1 = new Point((int) xStart, (int) yStart);
             _p2 = new Point((int) xEnd, (int) yEnd);

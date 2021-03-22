@@ -19,10 +19,11 @@ namespace LineDrawAlghorithm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _xStartTextBox.Text = "0";
-            _yStartTextBox.Text = "0";
-            _xEndTextBox.Text = "497";
-            _yEndTextBox.Text = "456";
+            _xStartTextBox.Text = "100";
+            _yStartTextBox.Text = "100";
+            _xEndTextBox.Text = "100";
+            _yEndTextBox.Text = "300";
+            _countOfIterations.Text = "20000";
             _bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
         }
 
@@ -39,15 +40,15 @@ namespace LineDrawAlghorithm
                     _figures = new Figures[]
                     {
                         new DDA(xStart, yStart, xEnd, yEnd, Color.Brown, _showDDATime),
-                        //new DDA(xStart + 10, yStart, xEnd + 10, yEnd, Color.Blue, this),
-                        new LibraryLine(xStart, yStart + 10, xEnd, yEnd + 10, Color.Chartreuse, _showLibraryTime)
+                        new BresenhamLineAlg(xStart, yStart + 10, xEnd, yEnd + 10, Color.Blue, _showBresenhamTime),
+                        new LibraryLine(xStart, yStart + 20, xEnd, yEnd + 20, Color.Green, _showLibraryTime)
                     };
                 else
                     _figures = new Figures[]
                     {
                         new DDA(xStart, yStart, xEnd, yEnd, Color.Brown, _showDDATime),
-                        //new DDA(xStart + 10, yStart, xEnd + 10, yEnd, Color.Blue, this),
-                        new LibraryLine(xStart + 10, yStart, xEnd + 10, yEnd, Color.Chartreuse, _showLibraryTime)
+                        new BresenhamLineAlg(xStart + 10, yStart, xEnd + 10, yEnd, Color.Blue, _showBresenhamTime),
+                        new LibraryLine(xStart + 20, yStart, xEnd + 20, yEnd, Color.Green, _showLibraryTime)
                     };
 
                 pictureBox1.Paint += pictureBox1_Paint;
@@ -70,9 +71,9 @@ namespace LineDrawAlghorithm
                 _graphics?.Clear(pictureBox1.BackColor);
                 foreach (var figure in _figures)
                     figure.Draw(_graphics, figure.Color);
+                pictureBox1.Image = _bitmap;
             }
 
-            pictureBox1.Image = _bitmap;
             pictureBox1.Paint -= pictureBox1_Paint;
         }
 
@@ -81,33 +82,49 @@ namespace LineDrawAlghorithm
             _drawButton.Enabled = false;
             _benchButton.Enabled = false;
 
-            await Task.Run(() =>
+            try
             {
-                using (_graphics = Graphics.FromImage(_bitmap))
-                    foreach (var figure in _figures)
-                        figure.ShowAlgTime(figure, _graphics, figure.Color, figure.Label, pictureBox1, this);
-            });
-            
+                var iter = int.Parse(_countOfIterations.Text);
+                await Task.Run(() =>
+                {
+                    using (_graphics = Graphics.FromImage(_bitmap))
+                        foreach (var figure in _figures)
+                            figure.ShowAlgTime(figure, _graphics, figure.Color, figure.Label, pictureBox1, this, iter);
+                });
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show(ex.Message);
+                _countOfIterations.Text = "20000";
+            }
+
             _drawButton.Enabled = true;
             _benchButton.Enabled = true;
         }
 
-        public void ToLabel(Label label, string text)
+        public void ToLabel(Label label, Color color, string text)
         {
+            label.ForeColor = color;
             if (label.InvokeRequired)
                 label.Invoke(new Action<string>(s => label.Text = text), text);
             else
                 label.Text = text;
         }
-        
-        /*public int Count()
+
+        public int Count(int count)
         {
+            var iter = int.Parse(_countOfIterations.Text);
+
             if (_countOfIterations.InvokeRequired)
-                _countOfIterations.Invoke(new Action<int>(c => _countOfIterations.Text = count), count);
+                _countOfIterations.Invoke(new Action<int>(c => iter = count), count);
             else
-                _countOfIterations.Text = count;
-            
-            return 
-        }*/
+                iter = count;
+
+            return iter;
+        }
     }
 }
