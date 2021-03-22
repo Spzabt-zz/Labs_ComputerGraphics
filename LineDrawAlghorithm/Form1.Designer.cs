@@ -30,6 +30,8 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label8 = new System.Windows.Forms.Label();
+            this._countOfIterations = new System.Windows.Forms.TextBox();
             this._benchButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -47,8 +49,6 @@
             this._xStartTextBox = new System.Windows.Forms.TextBox();
             this._drawButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this._countOfIterations = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize) (this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -92,6 +92,21 @@
             this.splitContainer1.SplitterDistance = 140;
             this.splitContainer1.TabIndex = 0;
             // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(3, 166);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 30);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Test count";
+            // 
+            // _countOfIterations
+            // 
+            this._countOfIterations.Location = new System.Drawing.Point(50, 169);
+            this._countOfIterations.Name = "_countOfIterations";
+            this._countOfIterations.Size = new System.Drawing.Size(83, 20);
+            this._countOfIterations.TabIndex = 18;
+            // 
             // _benchButton
             // 
             this._benchButton.Location = new System.Drawing.Point(3, 140);
@@ -124,7 +139,7 @@
             this._showBresenhamTime.Name = "_showBresenhamTime";
             this._showBresenhamTime.Size = new System.Drawing.Size(100, 23);
             this._showBresenhamTime.TabIndex = 14;
-            this._showBresenhamTime.Text = "2";
+            this._showBresenhamTime.Text = "00:00:00:0000000";
             // 
             // _showDDATime
             // 
@@ -132,7 +147,7 @@
             this._showDDATime.Name = "_showDDATime";
             this._showDDATime.Size = new System.Drawing.Size(100, 23);
             this._showDDATime.TabIndex = 13;
-            this._showDDATime.Text = "1";
+            this._showDDATime.Text = "00:00:00:0000000";
             // 
             // label5
             // 
@@ -148,7 +163,7 @@
             this._showLibraryTime.Name = "_showLibraryTime";
             this._showLibraryTime.Size = new System.Drawing.Size(100, 23);
             this._showLibraryTime.TabIndex = 11;
-            this._showLibraryTime.Text = "3";
+            this._showLibraryTime.Text = "00:00:00:0000000";
             // 
             // label4
             // 
@@ -228,21 +243,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(552, 433);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // _countOfIterations
-            // 
-            this._countOfIterations.Location = new System.Drawing.Point(50, 169);
-            this._countOfIterations.Name = "_countOfIterations";
-            this._countOfIterations.Size = new System.Drawing.Size(83, 20);
-            this._countOfIterations.TabIndex = 18;
-            // 
-            // label8
-            // 
-            this.label8.Location = new System.Drawing.Point(3, 166);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 30);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Test count";
             // 
             // Form1
             // 

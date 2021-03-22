@@ -118,12 +118,10 @@ namespace LineDrawAlghorithm
         public int Count(int count)
         {
             var iter = int.Parse(_countOfIterations.Text);
-
             if (_countOfIterations.InvokeRequired)
                 _countOfIterations.Invoke(new Action<int>(c => iter = count), count);
             else
                 iter = count;
-
             return iter;
         }
     }
