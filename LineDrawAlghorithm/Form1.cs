@@ -21,8 +21,8 @@ namespace LineDrawAlghorithm
         {
             _xStartTextBox.Text = "100";
             _yStartTextBox.Text = "100";
-            _xEndTextBox.Text = "100";
-            _yEndTextBox.Text = "300";
+            _xEndTextBox.Text = "300";
+            _yEndTextBox.Text = "100";
             _countOfIterations.Text = "20000";
             _bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
         }
@@ -99,7 +99,7 @@ namespace LineDrawAlghorithm
             catch (FormatException ex)
             {
                 MessageBox.Show(ex.Message);
-                _countOfIterations.Text = "20000";
+                _countOfIterations.Text = "10000";
             }
 
             _drawButton.Enabled = true;

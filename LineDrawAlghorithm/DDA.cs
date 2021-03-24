@@ -51,7 +51,7 @@ namespace LineDrawAlghorithm
             double dx = DeltaX();
             double dy = DeltaY();
 
-            PutPixel(graphics, (int) _x1, (int) _x2, color);
+            PutPixel(graphics, (int) _x1, (int) _y1, color);
             while (length != 0)
             {
                 _x1 += dx;
@@ -71,7 +71,7 @@ namespace LineDrawAlghorithm
 
             double x = x1, y = y1;
 
-            PutPixel(graphics, (int) _x1, (int) _x2, color);
+            PutPixel(graphics, (int) _x1, (int) _y1, color);
             while (length != 0)
             {
                 x += dX;
