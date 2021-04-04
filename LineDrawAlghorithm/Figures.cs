@@ -12,6 +12,7 @@ namespace LineDrawAlghorithm
         protected double YStart { get; private set; }
         protected double XEnd { get; private set; }
         protected double YEnd { get; private set; }
+        protected double Radius { get; private set; }
         public Color Color { get; private set; }
         public Label Label { get; private set; }
 
@@ -25,15 +26,24 @@ namespace LineDrawAlghorithm
             Label = label;
         }
 
+        protected Figures(int xStart, int yStart, int radius, Color color, Label label)
+        {
+            XStart = xStart;
+            YStart = yStart;
+            Radius = radius;
+            Color = color;
+            Label = label;
+        }
+
         public abstract void Draw(Graphics graphics, Color color);
 
         protected abstract void AlgImplementation(int x1, int y1, int x2, int y2, Graphics graphics,
             Color color);
 
-        public void ShowAlgTime(Figures figures, Graphics g, Color c, Label label, PictureBox pictureBox, Form1 form1,
-            int count)
+        public void ShowAlgTime(Figures figures, Graphics g, Color c, Label label, PictureBox pictureBox,
+            BaseForm form1, int count, TextBox textBox)
         {
-            int countOfIter = form1.Count(count);
+            int countOfIter = form1.Count(textBox, count);
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             for (int i = 0; i < countOfIter; i++)
@@ -43,7 +53,7 @@ namespace LineDrawAlghorithm
 
             stopwatch.Stop();
             form1.ToLabel(label, c, stopwatch.Elapsed.ToString());
-            g.Clear(pictureBox.BackColor);
+            g?.Clear(pictureBox.BackColor);
         }
 
         protected static void PutPixel(Graphics g, int x, int y, Color color)

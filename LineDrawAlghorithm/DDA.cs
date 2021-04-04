@@ -68,7 +68,6 @@ namespace LineDrawAlghorithm
             int length = Math.Max(deltaX, deltaY);
 
             double dX = deltaX / (float) length, dY = deltaY / (float) length;
-
             double x = x1, y = y1;
 
             PutPixel(graphics, (int) _x1, (int) _y1, color);

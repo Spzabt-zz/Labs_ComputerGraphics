@@ -6,7 +6,7 @@ using static System.String;
 
 namespace LineDrawAlghorithm
 {
-    public partial class Form1 : Form
+    public partial class Form1 : BaseForm
     {
         private Graphics _graphics;
         private Figures[] _figures;
@@ -85,12 +85,10 @@ namespace LineDrawAlghorithm
             try
             {
                 var iter = int.Parse(_countOfIterations.Text);
-                await Task.Run(() =>
-                {
-                    using (_graphics = Graphics.FromImage(_bitmap))
-                        foreach (var figure in _figures)
-                            figure.ShowAlgTime(figure, _graphics, figure.Color, figure.Label, pictureBox1, this, iter);
-                });
+                using (_graphics = Graphics.FromImage(_bitmap))
+                    foreach (var figure in _figures)
+                        await Task.Run(() => figure.ShowAlgTime(figure, _graphics, figure.Color, figure.Label,
+                            pictureBox1, this, iter, _countOfIterations));
             }
             catch (NullReferenceException ex)
             {
@@ -104,25 +102,6 @@ namespace LineDrawAlghorithm
 
             _drawButton.Enabled = true;
             _benchButton.Enabled = true;
-        }
-
-        public void ToLabel(Label label, Color color, string text)
-        {
-            label.ForeColor = color;
-            if (label.InvokeRequired)
-                label.Invoke(new Action<string>(s => label.Text = text), text);
-            else
-                label.Text = text;
-        }
-
-        public int Count(int count)
-        {
-            var iter = int.Parse(_countOfIterations.Text);
-            if (_countOfIterations.InvokeRequired)
-                _countOfIterations.Invoke(new Action<int>(c => iter = count), count);
-            else
-                iter = count;
-            return iter;
         }
     }
 }

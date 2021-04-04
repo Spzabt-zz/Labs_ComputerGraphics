@@ -46,20 +46,41 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="BaseForm.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="BaseForm.Designer.cs">
+          <DependentUpon>BaseForm.cs</DependentUpon>
+        </Compile>
+        <Compile Include="BresenhamCircleAlgorithm.cs" />
         <Compile Include="BresenhamLineAlg.cs" />
         <Compile Include="DDA.cs" />
         <Compile Include="Figures.cs" />
-        <Compile Include="Form1.cs">
+        <Compile Include="Lab2.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Lab2.Designer.cs">
+          <DependentUpon>Lab2.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Lab1.cs">
             <SubType>Form</SubType>
         </Compile>
-        <Compile Include="Form1.Designer.cs">
-            <DependentUpon>Form1.cs</DependentUpon>
+        <Compile Include="Lab1.Designer.cs">
+            <DependentUpon>Lab1.cs</DependentUpon>
         </Compile>
+        <Compile Include="LibraryCircle.cs" />
         <Compile Include="LibraryLine.cs" />
+        <Compile Include="ModifiedCircleAlg.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <EmbeddedResource Include="Form1.resx">
-          <DependentUpon>Form1.cs</DependentUpon>
+        <EmbeddedResource Include="BaseForm.resx">
+          <DependentUpon>BaseForm.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Lab2.resx">
+          <DependentUpon>Lab2.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Lab1.resx">
+          <DependentUpon>Lab1.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Properties\Resources.resx">
             <Generator>ResXFileCodeGenerator</Generator>
