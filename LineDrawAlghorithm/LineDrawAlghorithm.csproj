@@ -52,8 +52,10 @@
         <Compile Include="BaseForm.Designer.cs">
           <DependentUpon>BaseForm.cs</DependentUpon>
         </Compile>
+        <Compile Include="Box2D.cs" />
         <Compile Include="BresenhamCircleAlgorithm.cs" />
         <Compile Include="BresenhamLineAlg.cs" />
+        <Compile Include="ColorFillingWithBounds.cs" />
         <Compile Include="DDA.cs" />
         <Compile Include="Figures.cs" />
         <Compile Include="Lab2.cs">
@@ -68,11 +70,18 @@
         <Compile Include="Lab1.Designer.cs">
             <DependentUpon>Lab1.cs</DependentUpon>
         </Compile>
+        <Compile Include="Lab3.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Lab3.Designer.cs">
+          <DependentUpon>Lab3.cs</DependentUpon>
+        </Compile>
         <Compile Include="LibraryCircle.cs" />
         <Compile Include="LibraryLine.cs" />
         <Compile Include="ModifiedCircleAlg.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="TriangleFilling.cs" />
         <EmbeddedResource Include="BaseForm.resx">
           <DependentUpon>BaseForm.cs</DependentUpon>
         </EmbeddedResource>
@@ -81,6 +90,9 @@
         </EmbeddedResource>
         <EmbeddedResource Include="Lab1.resx">
           <DependentUpon>Lab1.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Lab3.resx">
+          <DependentUpon>Lab3.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Properties\Resources.resx">
             <Generator>ResXFileCodeGenerator</Generator>
