@@ -15,9 +15,9 @@ namespace LineDrawAlghorithm
         protected double Radius { get; private set; }
         public Color Color { get; private set; }
         public Label Label { get; private set; }
-        protected Point Point0 {get; private set;}
-        protected Point Point1 {get; private set;}
-        protected Point Point2 {get; private set;}
+        protected Point Point0 { get; private set; }
+        protected Point Point1 { get; private set; }
+        protected Point Point2 { get; private set; }
 
         protected Figures(double xStart, double yStart, double xEnd, double yEnd, Color color, Label label)
         {
@@ -37,7 +37,7 @@ namespace LineDrawAlghorithm
             Color = color;
             Label = label;
         }
-        
+
         protected Figures(Point point0, Point point1, Point point2, Color color, Label label)
         {
             Point0 = point0;

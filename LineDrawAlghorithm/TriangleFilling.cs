@@ -9,6 +9,7 @@ namespace LineDrawAlghorithm
         private readonly Point _point0;
         private readonly Point _point1;
         private readonly Point _point2;
+        private Box2D _box;
 
         public TriangleFilling(Point point0, Point point1, Point point2, Color color, Label label) : base(point0,
             point1, point2, color, label)
@@ -23,10 +24,10 @@ namespace LineDrawAlghorithm
             DdaLine(graphics, color, _point0, _point1);
             DdaLine(graphics, color, _point1, _point2);
             DdaLine(graphics, color, _point2, _point0);
-            Box2D box2D = FindTriangleBoundingBox(_point0, _point1, _point2);
-            for (int y = box2D.TopLeft.Y; y < box2D.BottomRight.Y; y++)
+            var box = _box.FindTriangleBoundingBox(_point0, _point1, _point2);
+            for (int y = box.TopLeft.Y; y < box.BottomRight.Y; y++)
             {
-                for (int x = box2D.TopLeft.X; x < box2D.BottomRight.X; x++)
+                for (int x = box.TopLeft.X; x < box.BottomRight.X; x++)
                 {
                     if (IsTriangle(new Point(x, y), _point0, _point1, _point2))
                     {
@@ -34,11 +35,6 @@ namespace LineDrawAlghorithm
                     }
                 }
             }
-        }
-
-        protected override void AlgImplementation(int x1, int y1, int x2, int y2, Graphics graphics, Color color)
-        {
-            throw new System.NotImplementedException();
         }
 
         private void DdaLine(Graphics g, Color c, Point point0, Point point1)
@@ -60,18 +56,6 @@ namespace LineDrawAlghorithm
             }
         }
 
-        private Box2D FindTriangleBoundingBox( /*Graphics g, Color c, */ Point point0, Point point1, Point point2)
-        {
-            Box2D result = new Box2D();
-            int minX = Min(point0.X, point1.X, point2.X);
-            int minY = Min(point0.Y, point1.Y, point2.Y);
-            int maxX = Max(point0.X, point1.X, point2.X);
-            int maxY = Max(point0.Y, point1.Y, point2.Y);
-            result.TopLeft = new Point(minX, minY);
-            result.BottomRight = new Point(maxX, maxY);
-            return result;
-        }
-
         private bool IsTriangle(Point p, Point a, Point b, Point c)
         {
             int aSide = (a.Y - b.Y) * p.X + (b.X - a.X) * p.Y + (a.X * b.Y - b.X * a.Y);
@@ -81,36 +65,22 @@ namespace LineDrawAlghorithm
             return (aSide >= 0 && bSide >= 0 && cSide >= 0) || (aSide < 0 && bSide < 0 && cSide < 0);
         }
 
-        private int Max(int x1, int x2, int x3)
+        protected override void AlgImplementation(int x1, int y1, int x2, int y2, Graphics graphics, Color color)
         {
-            int res;
-            if (x1 > x2)
-                if (x1 > x3) /*A - наибольшее*/
-                    res = x1;
-                else /*С - наибольшее*/
-                    res = x3;
-            else if (x2 > x3) /*B - наибольшее*/
-                res = x2;
-            else /*С - наибольшее*/
-                res = x3;
-
-            return res;
-        }
-
-        private int Min(int x1, int x2, int x3)
-        {
-            int res;
-            if (x1 < x2)
-                if (x1 < x3) /*A - наибольшее*/
-                    res = x1;
-                else /*С - наибольшее*/
-                    res = x3;
-            else if (x2 < x3) /*B - наибольшее*/
-                res = x2;
-            else /*С - наибольшее*/
-                res = x3;
-
-            return res;
+            DdaLine(graphics, color, _point0, _point1);
+            DdaLine(graphics, color, _point1, _point2);
+            DdaLine(graphics, color, _point2, _point0);
+            var box = _box.FindTriangleBoundingBox(_point0, _point1, _point2);
+            for (int y = box.TopLeft.Y; y < box.BottomRight.Y; y++)
+            {
+                for (int x = box.TopLeft.X; x < box.BottomRight.X; x++)
+                {
+                    if (IsTriangle(new Point(x, y), _point0, _point1, _point2))
+                    {
+                        PutPixel(graphics, x, y, color);
+                    }
+                }
+            }
         }
     }
 }

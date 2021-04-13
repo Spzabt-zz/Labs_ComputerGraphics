@@ -79,6 +79,7 @@
         <Compile Include="LibraryCircle.cs" />
         <Compile Include="LibraryLine.cs" />
         <Compile Include="ModifiedCircleAlg.cs" />
+        <Compile Include="PointInsideTriangle.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="TriangleFilling.cs" />

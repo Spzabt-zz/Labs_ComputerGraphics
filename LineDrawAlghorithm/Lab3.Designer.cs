@@ -39,10 +39,10 @@
             this._benchButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this._showBresenhamTime = new System.Windows.Forms.Label();
-            this._showDDATime = new System.Windows.Forms.Label();
+            this._showColorFillingWithBoundsTime = new System.Windows.Forms.Label();
+            this._showTriangleFillingTime = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this._showLibraryTime = new System.Windows.Forms.Label();
+            this._showCoordinates = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this._y2TextBox = new System.Windows.Forms.TextBox();
@@ -64,7 +64,6 @@
             // 
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -79,10 +78,10 @@
             this.splitContainer1.Panel1.Controls.Add(this._benchButton);
             this.splitContainer1.Panel1.Controls.Add(this.label7);
             this.splitContainer1.Panel1.Controls.Add(this.label6);
-            this.splitContainer1.Panel1.Controls.Add(this._showBresenhamTime);
-            this.splitContainer1.Panel1.Controls.Add(this._showDDATime);
+            this.splitContainer1.Panel1.Controls.Add(this._showColorFillingWithBoundsTime);
+            this.splitContainer1.Panel1.Controls.Add(this._showTriangleFillingTime);
             this.splitContainer1.Panel1.Controls.Add(this.label5);
-            this.splitContainer1.Panel1.Controls.Add(this._showLibraryTime);
+            this.splitContainer1.Panel1.Controls.Add(this._showCoordinates);
             this.splitContainer1.Panel1.Controls.Add(this.label4);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this._y2TextBox);
@@ -96,8 +95,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
-            this.splitContainer1.Size = new System.Drawing.Size(700, 437);
-            this.splitContainer1.SplitterDistance = 140;
+            this.splitContainer1.Size = new System.Drawing.Size(1270, 687);
+            this.splitContainer1.SplitterDistance = 139;
             this.splitContainer1.TabIndex = 0;
             // 
             // label10
@@ -157,51 +156,50 @@
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(19, 281);
+            this.label7.Location = new System.Drawing.Point(19, 468);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 23);
+            this.label7.Size = new System.Drawing.Size(100, 43);
             this.label7.TabIndex = 16;
-            this.label7.Text = "Алгоритм ЦДА:";
+            this.label7.Text = "Процедура зафарбованого трикутника:";
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(19, 327);
+            this.label6.Location = new System.Drawing.Point(19, 534);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 30);
             this.label6.TabIndex = 15;
-            this.label6.Text = "Алгоритм Брезенхема:";
+            this.label6.Text = "Алгоритм кольору межі:";
             // 
-            // _showBresenhamTime
+            // _showColorFillingWithBoundsTime
             // 
-            this._showBresenhamTime.Location = new System.Drawing.Point(19, 357);
-            this._showBresenhamTime.Name = "_showBresenhamTime";
-            this._showBresenhamTime.Size = new System.Drawing.Size(100, 23);
-            this._showBresenhamTime.TabIndex = 14;
-            this._showBresenhamTime.Text = "00:00:00:0000000";
+            this._showColorFillingWithBoundsTime.Location = new System.Drawing.Point(19, 564);
+            this._showColorFillingWithBoundsTime.Name = "_showColorFillingWithBoundsTime";
+            this._showColorFillingWithBoundsTime.Size = new System.Drawing.Size(100, 23);
+            this._showColorFillingWithBoundsTime.TabIndex = 14;
+            this._showColorFillingWithBoundsTime.Text = "00:00:00:0000000";
             // 
-            // _showDDATime
+            // _showTriangleFillingTime
             // 
-            this._showDDATime.Location = new System.Drawing.Point(19, 304);
-            this._showDDATime.Name = "_showDDATime";
-            this._showDDATime.Size = new System.Drawing.Size(100, 23);
-            this._showDDATime.TabIndex = 13;
-            this._showDDATime.Text = "00:00:00:0000000";
+            this._showTriangleFillingTime.Location = new System.Drawing.Point(19, 511);
+            this._showTriangleFillingTime.Name = "_showTriangleFillingTime";
+            this._showTriangleFillingTime.Size = new System.Drawing.Size(100, 23);
+            this._showTriangleFillingTime.TabIndex = 13;
+            this._showTriangleFillingTime.Text = "00:00:00:0000000";
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(19, 380);
+            this.label5.Location = new System.Drawing.Point(19, 587);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 23);
+            this.label5.Size = new System.Drawing.Size(100, 47);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Бібліотечна лінія:";
+            this.label5.Text = "Алгоритм попадання точки в трикутник:";
             // 
-            // _showLibraryTime
+            // _showCoordinates
             // 
-            this._showLibraryTime.Location = new System.Drawing.Point(19, 403);
-            this._showLibraryTime.Name = "_showLibraryTime";
-            this._showLibraryTime.Size = new System.Drawing.Size(100, 23);
-            this._showLibraryTime.TabIndex = 11;
-            this._showLibraryTime.Text = "00:00:00:0000000";
+            this._showCoordinates.Location = new System.Drawing.Point(19, 634);
+            this._showCoordinates.Name = "_showCoordinates";
+            this._showCoordinates.Size = new System.Drawing.Size(100, 44);
+            this._showCoordinates.TabIndex = 11;
             // 
             // label4
             // 
@@ -278,7 +276,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(552, 433);
+            this.pictureBox1.Size = new System.Drawing.Size(1123, 683);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -286,7 +284,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 437);
+            this.ClientSize = new System.Drawing.Size(1270, 687);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -316,12 +314,12 @@
 
         private System.Windows.Forms.Label label7;
 
-        private System.Windows.Forms.Label _showBresenhamTime;
+        private System.Windows.Forms.Label _showTriangleFillingTime;
         private System.Windows.Forms.Label label6;
 
-        private System.Windows.Forms.Label _showDDATime;
+        private System.Windows.Forms.Label _showColorFillingWithBoundsTime;
 
-        private System.Windows.Forms.Label _showLibraryTime;
+        private System.Windows.Forms.Label _showCoordinates;
         private System.Windows.Forms.Label label5;
 
         private System.Windows.Forms.TextBox _y2TextBox;
